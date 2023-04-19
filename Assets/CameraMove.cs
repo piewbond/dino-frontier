@@ -28,23 +28,5 @@ public class CameraMove : MonoBehaviour
 
         }
 
-        //keyboard movement
-        //float moveAmount = 20f;
-        //if (Input.GetKey(KeyCode.W)) {
-        //    transform.position.y += moveAmount * Time.deltaTime;
-        //}
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    transform.position.y -= moveAmount * Time.deltaTime;
-        //}
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    transform.position.x += moveAmount * Time.deltaTime;
-        //}
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    transform.position.x -= moveAmount * Time.deltaTime;
-        //}
-
     }
 }
