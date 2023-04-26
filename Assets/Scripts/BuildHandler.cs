@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
@@ -8,15 +9,33 @@ public class BuildHandler : MonoBehaviour
 {
 
     [SerializeField]  private BuildingTypeSO activeBuildingType;
+    private GameObject building;
+    private Transform clone;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if (Input.GetMouseButton(1) && !EventSystem.current.IsPointerOverGameObject())
+
+        Vector3 mouseWorldPosition = GetMouseWorldPosition();
+        clone.transform.position = mouseWorldPosition;
+            if (CanSpawnBuilding(activeBuildingType, mouseWorldPosition))
+            {
+                //set blue
+                SetBuildingColor(Color.blue);
+            }
+            else
+            {
+                //set red
+                SetBuildingColor(Color.red);
+            }
+        
+
+        if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            Vector3 mouseWorldPosition = GetMouseWorldPosition();
-            if(CanSpawnBuilding(activeBuildingType,mouseWorldPosition))
-                Instantiate(activeBuildingType.prefab, mouseWorldPosition, Quaternion.identity);
+            if (CanSpawnBuilding(activeBuildingType, mouseWorldPosition)) {
+                SetBuildingColor(Color.white);
+                this.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -56,5 +75,15 @@ public class BuildHandler : MonoBehaviour
             return true;
         }
 
+    }
+    public void CreateBuildingBase() {
+        Vector3 mouseWorldPosition = GetMouseWorldPosition();
+        clone = Instantiate(activeBuildingType.prefab, mouseWorldPosition, Quaternion.identity);
+    }
+
+    public void SetBuildingColor(Color color)
+    {
+        Renderer renderer = clone.GetComponentInChildren<Renderer>();
+        renderer.material.color = color;
     }
 }
