@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeBuildingType: {fileID: 11400000, guid: c1873a786cd4fb341ac71bcd56912aee, type: 2}
+  buildingBasePrefab: {fileID: 2957202113921531831, guid: dfdd23f081612814b9d816a2253b529f, type: 3}
 --- !u!4 &3112535
 Transform:
   m_ObjectHideFlags: 0

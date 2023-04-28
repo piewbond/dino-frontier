@@ -9,16 +9,17 @@ public class BuildHandler : MonoBehaviour
 {
 
     [SerializeField]  private BuildingTypeSO activeBuildingType;
+    [SerializeField] private Transform buildingBasePrefab;
     private GameObject building;
     private Transform clone;
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
 
         Vector3 mouseWorldPosition = GetMouseWorldPosition();
         clone.transform.position = mouseWorldPosition;
-            if (CanSpawnBuilding(activeBuildingType, mouseWorldPosition))
+            if (CanSpawnBuilding(activeBuildingType, mouseWorldPosition) )
             {
                 //set blue
                 SetBuildingColor(Color.blue);
@@ -30,13 +31,18 @@ public class BuildHandler : MonoBehaviour
             }
         
 
-        if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
+        if (Input.GetMouseButton(0))
         {
-            if (CanSpawnBuilding(activeBuildingType, mouseWorldPosition)) {
-                SetBuildingColor(Color.white);
+            if (EventSystem.current.IsPointerOverGameObject())
+                Destroy(clone.gameObject);
+
+            if (CanSpawnBuilding(activeBuildingType, mouseWorldPosition) ) {
+                Instantiate(activeBuildingType.prefab, mouseWorldPosition, Quaternion.identity);
+                Destroy(clone.gameObject);
                 this.gameObject.SetActive(false);
             }
         }
+        
     }
 
     public void SetActiveBuildingType(BuildingTypeSO buildingTypeSO) { 
@@ -78,7 +84,7 @@ public class BuildHandler : MonoBehaviour
     }
     public void CreateBuildingBase() {
         Vector3 mouseWorldPosition = GetMouseWorldPosition();
-        clone = Instantiate(activeBuildingType.prefab, mouseWorldPosition, Quaternion.identity);
+        clone = Instantiate(buildingBasePrefab, mouseWorldPosition, Quaternion.identity);
     }
 
     public void SetBuildingColor(Color color)
