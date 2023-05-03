@@ -36,11 +36,13 @@ public class BuildHandler : MonoBehaviour
             if (EventSystem.current.IsPointerOverGameObject())
                 Destroy(clone.gameObject);
 
-            if (CanSpawnBuilding(activeBuildingType, mouseWorldPosition) ) {
+            if (CanSpawnBuilding(activeBuildingType, mouseWorldPosition) && !EventSystem.current.IsPointerOverGameObject()) {
                 Instantiate(activeBuildingType.prefab, mouseWorldPosition, Quaternion.identity);
                 Destroy(clone.gameObject);
-                this.gameObject.SetActive(false);
             }
+
+            //leave building 
+            this.gameObject.SetActive(false);
         }
         
     }

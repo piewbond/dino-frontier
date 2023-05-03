@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 target;
 
     NavMeshAgent agent;
+    Animator animator;
 
     void Awake() {
 
@@ -21,13 +22,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator= GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         SetTargetPosition();
         SetAgentPosition();
     }
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            animator.SetBool("isMoving", true);
         }
     }
 }
