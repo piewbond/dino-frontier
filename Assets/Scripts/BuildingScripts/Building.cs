@@ -6,20 +6,21 @@ public class Building : MonoBehaviour
 {
 
     [SerializeField] private ResourceTypeSO resourceType;
-    //[SerializeField] private ResourceManager resourceManager;
+    private ResourceManager resourceManager;
     [SerializeField] private float resourceSpeed; // how much resource does it add when updateing
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        resourceManager = GameObject.Find("ResourceManager").GetComponent<ResourceManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float amount = Time.deltaTime * resourceSpeed;
-        ResourceManager.AddResource(resourceType, amount);
+        resourceManager.AddResource(resourceType, amount);
     }
+    //TODO production
 
 }

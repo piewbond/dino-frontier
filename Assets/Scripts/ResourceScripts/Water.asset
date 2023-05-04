@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCapacity: 500
   minCapacity: 10
-  Name: Water
-  currentAmount: 300
+  barName: WaterBar
+  currentAmount: 313.18948

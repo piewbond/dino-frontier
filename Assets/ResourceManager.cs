@@ -5,42 +5,39 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public static class ResourceManager
+public class ResourceManager : MonoBehaviour
 {
 
-    private static List<ResourceTypeSO> resources = new List<ResourceTypeSO>();
-    private static List<GameObject> barPanel = new List<GameObject>();
+    [SerializeField] private List<ResourceTypeSO> resources = new List<ResourceTypeSO>();
+    [SerializeField] private List<GameObject> barPanel = new List<GameObject>();
 
-    private static void SetBars() {
-        int i = 0;
-        foreach (ResourceTypeSO resource in resources)
-        {
-            float barLength = resource.currentAmount / resource.maxCapacity;
-            barPanel[i].GetComponent<SliderChanger>().SetSlider(barLength);
-            i++;
-        }
+    private void SetBar(ResourceTypeSO resource) {
+        
+        float barLength = resource.currentAmount / resource.maxCapacity;
+        GameObject.Find(resource.barName).GetComponent<SliderChanger>().SetSlider(barLength);
+
     }
 
-    public static void AddResource(ResourceTypeSO resourceType, float amount)
+    public void AddResource(ResourceTypeSO resourceType, float amount)
     {
         foreach (ResourceTypeSO res in resources)
         {
             if (resourceType == res) { 
                 res.currentAmount += amount;
+                SetBar(res);
             }
         }
-        SetBars();
     }
 
-    public static void RemoveResource(ResourceTypeSO resourceType) { 
+    public void RemoveResource(ResourceTypeSO resourceType) { 
     
     
     }
 
-    public static void AddResourceType(ResourceTypeSO resourceType) {
+    public void AddResourceType(ResourceTypeSO resourceType) {
         resources.Add(resourceType);
     }
-    public static void AddStatusBar(GameObject bar) {
+    public void AddStatusBar(GameObject bar) {
         barPanel.Add(bar);
     }
 }

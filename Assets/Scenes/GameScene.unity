@@ -2707,7 +2707,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 804533944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ce4aa9ea2f083408e2caf378b4c626, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f8bc70313613b14699c3bccbe622926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resources:
@@ -2715,9 +2715,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 573bdd8c2cd6701458ec480af6aaecb0, type: 2}
   - {fileID: 11400000, guid: ddbc878842bc30f4882d0e54c4e90d6e, type: 2}
   barPanel:
-  - {fileID: 2030113308}
-  - {fileID: 562142761}
-  - {fileID: 2114570711}
+  - {fileID: 3615863743300921676, guid: 508b1d23ec58ff14688592e731c401ba, type: 3}
+  - {fileID: 2256167157531930841, guid: 0560edd68e9b1284a80ecfd4799b9a5a, type: 3}
+  - {fileID: 2761779702633587694, guid: 97e63a19f6d5cce47b73e1752a8a5758, type: 3}
 --- !u!1 &814869675
 GameObject:
   m_ObjectHideFlags: 0
@@ -49548,7 +49548,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 62129075798954164, guid: 6a468cadb7ba3444693c937c55795799, type: 3}
       propertyPath: m_Name
-      value: Energy Bar
+      value: EnergyBar
       objectReference: {fileID: 0}
     - target: {fileID: 153072175742048570, guid: 6a468cadb7ba3444693c937c55795799, type: 3}
       propertyPath: m_Value

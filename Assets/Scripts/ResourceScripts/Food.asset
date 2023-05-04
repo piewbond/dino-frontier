@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCapacity: 500
   minCapacity: 10
-  Name: Food
-  currentAmount: 30
+  barName: FoodBar
+  currentAmount: 288.0038

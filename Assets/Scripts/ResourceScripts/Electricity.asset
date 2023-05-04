@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCapacity: 500
   minCapacity: 20
-  Name: Electricity
-  currentAmount: 10
+  barName: EnergyBar
+  currentAmount: 175.73994
