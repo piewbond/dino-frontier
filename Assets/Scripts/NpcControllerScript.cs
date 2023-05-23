@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class NpcControllerScript : MonoBehaviour
 {
+    public bool onTask;
 
     NavMeshAgent agent;
     // Start is called before the first frame update
@@ -17,6 +18,9 @@ public class NpcControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (onTask)
+        {
+            
+        }
     }
 }
