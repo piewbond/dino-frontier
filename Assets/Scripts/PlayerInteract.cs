@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
+    public NPCInteractable interactable = null;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) {
-
-            Debug.Log("Interact");
-            Collider2D collider = GetComponent<Collider2D>();
-            if (collider.TryGetComponent(out NPCInteractable nPCInteractable))
-            {
-                nPCInteractable.Interact();
+            if (interactable != null) {
+                interactable.Interact();
             }
         }
+    }
+    public void SetInteractable(NPCInteractable interactable) => this.interactable = interactable;
+
+    public NPCInteractable GetInteractable() { 
+        return interactable;
+    }
+    public void ClearInteractable() { 
+        interactable = null;
     }
 }
