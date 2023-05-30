@@ -34,7 +34,7 @@ public class PlayerInteractUI : MonoBehaviour
     }
     private void SetPosition() {
         Vector3 pos = playerInteract.GetInteractable().transform.position;
-        containerRect.anchoredPosition3D = new Vector3(pos.x, pos.y + 1.5f, 1.0f);
+        containerRect.anchoredPosition3D = new Vector3(pos.x, pos.y - 0.1f, 1.0f);
     }
     public void Hide() { containerGameObject.SetActive(false); }
 }

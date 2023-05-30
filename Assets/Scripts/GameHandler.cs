@@ -14,11 +14,30 @@ public class GameHandler : MonoBehaviour
     private Vector3 cameraFollowPosition;
 
     private float zoom = 8f;
+    [SerializeField]
+    public MyTaskSystem taskSystem;
+
+
+    [SerializeField]
+    WorkerTaskAI npc;
 
     // Start is called before the first frame update
     void Start()
     {
         cameraFollow.Setup(() => playerTransform.position, () => zoom);
+
+        //tasksystem setup
+        this.taskSystem = GetComponent<MyTaskSystem>();
+        npc.Setup();
+
+
+        FunctionTimer.Create(() =>
+        {
+            Debug.Log("Task added");
+            MyTaskSystem.Task task = new MyTaskSystem.Task.MoveToPosition { targetPosition = new Vector3(0f,0f) };
+            taskSystem.AddTask(task);
+        }, 5f);
+
 
     }
 

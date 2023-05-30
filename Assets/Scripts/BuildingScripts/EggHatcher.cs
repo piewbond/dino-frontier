@@ -6,7 +6,6 @@ public class EggHatcher : MonoBehaviour
 {
 
     [SerializeField] private Transform NPCPrefab;
-    [SerializeField] private bool taskUp;
     private int maxNPC = 5;
     private int NPCcount = 0;
     private float spawnTime = 5f;
@@ -21,8 +20,7 @@ public class EggHatcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > 10.0f)
-            FunctionTimer.Create(() => CreateTask(),1.0f);
+
     }
 
     public void HatchEgg() {
@@ -35,16 +33,6 @@ public class EggHatcher : MonoBehaviour
     public void SpawnNPC() {
         Instantiate(NPCPrefab, new Vector2(transform.position.x, transform.position.y-0.5f), Quaternion.identity);
         NPCcount++;
-    }
-
-    private void CreateTask() { 
-        taskUp = true;
-    
-    }
-
-    public void SolveTask() {
-        taskUp = false;
-        
     }
 
 }
